@@ -14,14 +14,50 @@
       href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap"
       rel="stylesheet"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Bingo</title>
   </head>
   <body>
+    <div
+      class="modal fade"
+      id="cartel"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="cartel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title" id="exampleModal3Label">
+              <h1 id="titulo"></h1>
+            </h1>
+          </div>
+          <div class="modal-body">
+            <h1 id="cuerpo"></h1>
+          </div>
+          <div class="modal-footer">
+            <input
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="cartel"
+              value="Cerrar"
+              id="cerrarModal"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+
     <div class="container-fluid">
       <div class="row">
-        <div class="col-3 bg-warning p-3">
+        <div class="col-3 p-3">
           <div id="formulario">
             <div class="form-group ">
               <label>Número de jugadores</label>
@@ -46,13 +82,14 @@
               </select>
             </div>
             <div class="form-group">
-              <label>Velocidad del juego</label>
+              <label>Dificultad del juego</label>
               <select id="velocidadJug" class="custom-select">
-                <option value="100">100 ms</option>
-                <option value="300">300 ms</option>
-                <option value="500">500 ms</option>
-                <option value="750">750 ms</option>
-                <option value="1000">1000 ms</option>
+                <option value="3250" selected>Fácil</option>
+                <option value="2500">Normal</option>
+                <option value="1500">Difícil</option>
+                <option value="100"
+                  >Ludicrous mode (Recomendado <b>SOLO</b> para pruebas)</option
+                >
               </select>
             </div>
             <input
@@ -63,46 +100,54 @@
             />
           </div>
           <div class="form-group seccionBombo">
-            <label>Números del bombo</label>
+            <label class="pl-1">Números del bombo</label>
             <table id="bombo"></table>
           </div>
         </div>
-        <div class="col-9 bg-danger ">
-          <div class="container-fluid bg-warning ">
+        <div class="col-md-9 m-0">
+          <div class="container-fluid">
             <div class="row">
               <div class="col-6 p-3">
                 <!-- <div class="fixed-bottom"> -->
                 <div class="outer-circle">
                   <div class="inner-circle">
-                    <h1 class="inside-content" id="valorBola"></h1>
+                    <h1 class="inside-content" id="valorBola">14</h1>
                   </div>
                 </div>
                 <!-- </div> -->
               </div>
-              <div class="col-6 bg-primary posicion-btn">
+              <div class="col-6 posicion-btn">
                 <input
                   type="button"
                   id="bingoBtn"
                   class="btn btn-bingo"
                   value="¡BINGO!"
+                  data-target="#cartel"
+                  data-toggle="modal"
                 />
               </div>
             </div>
           </div>
-          <div class="container-fluid bg-secondary">
+          <div class="container-fluid">
             <table id="tablaCarton" class="estiloCarton"></table>
           </div>
         </div>
       </div>
-      <div class="pre-scrollable mt-5">
-        <div class="container-fluid">
-          <div class="row ">
-            <div class="col-6" id="par"></div>
-            <div class="col-6" id="impar"></div>
+      <div class="cartonesMaquina">
+        <div class="pre-scrollable">
+          <div class="row">
+            <div class="col-md-6" id="par"></div>
+            <div class="col-md-6" id="impar"></div>
           </div>
         </div>
       </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
     <script src="scripts/claseCarton.js"></script>
     <script src="scripts/script.js"></script>
   </body>
